@@ -7,24 +7,20 @@ class Contact {
 public:
     Contact();
 
-    void set(const std::string &firstName,
-             const std::string &lastName,
-             const std::string &nickname,
-             const std::string &phoneNumber,
-             const std::string &darkestSecret);
+	enum Field {
+		FIRST_NAME = 0,
+		LAST_NAME,
+		NICKNAME,
+		PHONE_NUMBER,
+		DARKEST_SECRET,
+		FIELD_COUNT
+	};
 
-    const std::string &getFirstName() const;
-    const std::string &getLastName() const;
-    const std::string &getNickname() const;
-    const std::string &getPhoneNumber() const;
-    const std::string &getDarkestSecret() const;
+	void set(Field field, const std::string &value);
+	const std::string &get(Field field) const;
 
 private:
-    std::string m_firstName;
-    std::string m_lastName;
-    std::string m_nickname;
-    std::string m_phoneNumber;
-    std::string m_darkestSecret;
+	std::string m_fields[FIELD_COUNT];
 };
 
 #endif
