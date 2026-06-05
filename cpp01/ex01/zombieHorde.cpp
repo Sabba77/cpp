@@ -2,7 +2,8 @@
 
 // Requisito: "allocate N Zombie objects in a single allocation".
 // In C++ questo si fa con: new Zombie[N]
-Zombie* zombieHorde(int N, std::string name) {
+Zombie* zombieHorde(int N, std::string name)
+{
 	if (N <= 0)
 		return 0;
 

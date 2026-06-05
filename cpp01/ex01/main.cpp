@@ -1,5 +1,4 @@
 #include "Zombie.hpp"
-
 # include <iostream>
 
 static void announceHorde(Zombie *horde, int N) {
@@ -11,11 +10,12 @@ static void announceHorde(Zombie *horde, int N) {
 	}
 }
 
-int main() {
-	int const N = 5;
+int main()
+{
+	int const N = 10;
 
 	std::cout << "Creating horde of " << N << " zombies..." << std::endl;
-	Zombie *horde = zombieHorde(N, "HordeZombie");
+	Zombie *horde = zombieHorde(N, "Zombietti");
 
 	if (!horde) {
 		std::cout << "zombieHorde returned NULL" << std::endl;

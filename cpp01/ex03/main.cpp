@@ -2,12 +2,13 @@
 # include "HumanB.hpp"
 # include "Weapon.hpp"
 
-int main() {
+int main()
+{
 	{
-		Weapon club = Weapon("crude spiked club");
+		Weapon club = Weapon("sword");
 		HumanA bob("Bob", club);
 		bob.attack();
-		club.setType("some other type of club");
+		club.setType("gun");
 		bob.attack();
 	}
 	{

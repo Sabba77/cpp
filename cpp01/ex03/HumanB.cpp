@@ -2,18 +2,21 @@
 
 # include <iostream>
 
-HumanB::HumanB(std::string const &name) : _name(name), _weapon(0) {
+HumanB::HumanB(std::string const &name) : _name(name), _weapon(0)
+{
 	// _weapon parte NULL: HumanB non è per forza armato.
 }
 
-HumanB::~HumanB() {
-}
+HumanB::~HumanB()
+{}
 
-void HumanB::setWeapon(Weapon &weapon) {
+void HumanB::setWeapon(Weapon &weapon)
+{
 	_weapon = &weapon;
 }
 
-void HumanB::attack() const {
+void HumanB::attack() const
+{
 	if (_weapon)
 		std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
 	else
