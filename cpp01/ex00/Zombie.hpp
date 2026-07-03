@@ -1,6 +1,13 @@
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define	BLUE	"\033[38;2;41;28;230m"
+#define	YELLOW	"\033[38;2;125;123;12m"
+#define RESET   "\033[0m"
+
+
 # include <string>
 
 class Zombie {

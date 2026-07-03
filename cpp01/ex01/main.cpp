@@ -15,7 +15,7 @@ int main() {
 	int const N = 5;
 
 	std::cout << "Creating horde of " << N << " zombies..." << std::endl;
-	Zombie *horde = zombieHorde(N, "HordeZombie");
+	Zombie *horde = zombieHorde(N, "HordeZombieee");
 
 	if (!horde) {
 		std::cout << "zombieHorde returned NULL" << std::endl;

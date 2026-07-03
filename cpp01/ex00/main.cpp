@@ -4,12 +4,12 @@
 
 int main() {
 	// Caso 1: STACK allocation (vita limitata allo scope)
-	std::cout << "--- randomChump (stack) ---" << std::endl;
-	randomChump("StackZombie");
+	std::cout << BLUE << "--- randomChump (stack) ---" << RESET << std::endl;
+	randomChump("StackZombieee");
 
 	// Caso 2: HEAP allocation (vita controllata manualmente)
-	std::cout << "\n--- newZombie (heap) ---" << std::endl;
-	Zombie *z = newZombie("HeapZombie");
+	std::cout << BLUE << "\n--- newZombie (heap) ---" << RESET << std::endl;
+	Zombie *z = newZombie("HeapZombieee");
 	z->announce();
 
 	// IMPORTANTE: se non fai delete, crei una memory leak.

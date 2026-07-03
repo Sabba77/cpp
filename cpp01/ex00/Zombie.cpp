@@ -12,7 +12,7 @@ Zombie::Zombie(std::string const &name) : _name(name) {
 
 Zombie::~Zombie() {
 	// Il subject chiede SOLO che venga stampato un messaggio con il nome.
-	std::cout << "Zombie " << _name << " destroyed" << std::endl;
+	std::cout << RED << "Zombie " << _name << " destroyed" << RESET << std::endl;
 }
 
 void Zombie::setName(std::string const &name) {
@@ -20,5 +20,5 @@ void Zombie::setName(std::string const &name) {
 }
 
 void Zombie::announce(void) const {
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout <<  YELLOW << _name << ": BraiiiiiiinnnzzzZ..." << RESET << std::endl;
 }
