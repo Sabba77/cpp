@@ -1,0 +1,12 @@
+*.txt
+*.o
+*.out
+terminal_colors.h
+.vscode
+zombie
+zombieHorde
+brain
+weapon
+sed_is_for_losers
+harl
+fixed
