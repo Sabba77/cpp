@@ -1,41 +1,35 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed() : _rawBits(0)
-{
-	std::cout << RED << "DEFAULT CONSTRUCTOR CALLED!"<< RESET  << std::endl;
+{/* 
+	std::cout << RED << "DEFAULT CONSTRUCTOR CALLED!"<< RESET  << std::endl; */
 }
 
 Fixed::~Fixed()
-{
-	std::cout << RED << "DESTRUCTOR CALLED!" << RESET << std::endl;
+{/* 
+	std::cout << RED << "DESTRUCTOR CALLED!" << RESET << std::endl; */
 }
 
 Fixed::Fixed(const Fixed &other)
 {
-	std::cout << RED << "COPY CONSTRUCTOR CALLED!" << RESET << std::endl;
-
 	*this = other;
 }
 
 Fixed::Fixed(const int n)
 {
-	std::cout << RED << "INT CONSTRUCTOR CALLED!" << RESET << std::endl;
-
 	_rawBits = n << _fractionalBits;
 }
 
 Fixed::Fixed(const float n)
 {
-	std::cout << RED << "FLOAT CONSTRUCTOR CALLED!" << RESET << std::endl;
-
 	_rawBits = roundf(n * (1 << _fractionalBits));
 }
 
 
 
 Fixed &Fixed::operator=(const Fixed &other)
-{
-	std::cout << RED << "COPY ASSIGNAMENT OPERATOR CALLED!" << RESET  << std::endl;
+{/* 
+	std::cout << RED << "COPY ASSIGNAMENT OPERATOR CALLED!" << RESET  << std::endl; */
 
 	if (this == &other)
 		return	*this;
