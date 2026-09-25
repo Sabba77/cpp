@@ -10,7 +10,7 @@
 
 class	ClapTrap
 {
-private:
+protected:
 	std::string		name;
 	unsigned int	hitPoints;
 	unsigned int	energyPoints;
@@ -20,6 +20,7 @@ public:
 	ClapTrap();
 	ClapTrap(const ClapTrap& other);
 	ClapTrap(const std::string& otherName);
+	ClapTrap(const std::string& otherName, unsigned int hP, unsigned int eP, unsigned int aD);
 
 	ClapTrap& operator=(const ClapTrap& other);
 

@@ -10,14 +10,21 @@ ClapTrap::ClapTrap(const std::string &otherName) : name(otherName), hitPoints(10
 	std::cout << GREEN << "CONSTRUCTOR WITH NAME CALLED!" << RESET << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& other) : name(other.name) , hitPoints(other.hitPoints) , energyPoints(other.energyPoints) , attackDamage(other.attackDamage)
+ClapTrap::ClapTrap(const ClapTrap& other)
+	: name(other.name), hitPoints(other.hitPoints), energyPoints(other.energyPoints), attackDamage(other.attackDamage)
 {
 	std::cout << GREEN << "COPY CONSTRUCTOR CALLED!" << RESET << std::endl;
 }
 
-ClapTrap&	ClapTrap::operator=(const ClapTrap& other)
+ClapTrap::ClapTrap(const std::string& otherName, unsigned int hP, unsigned int eP, unsigned int aD)
+	: name(otherName) , hitPoints(hP) , energyPoints(eP) , attackDamage(aD) 
 {
-	std::cout << GREEN << "COPY ASSIGNAMENT OPERATOR CALLED!" << RESET << std::endl;
+	std::cout << GREEN << "CONSTRUCTOR WITH ALL ATTRIBUTES CALLED!" << RESET << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
+{
+	std::cout << GREEN << "COPY ASSIGNMENT OPERATOR CALLED!" << RESET << std::endl;
 
 	if (this == &other)
 		return *this;
