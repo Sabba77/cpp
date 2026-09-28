@@ -1,31 +1,36 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
 	// --- Test costruzione e distruzione ---
-	FragTrap	a;
-	FragTrap	b(a);
-	FragTrap	c("Peppino");
+	DiamondTrap	a;
+	DiamondTrap	b(a);
+	DiamondTrap	c("Peppino");
 
-	// --- Test attack normale ---
+	// --- Test whoAmI ---
+	a.whoAmI();
+	c.whoAmI();
+
+	// --- Test attack normale (deve usare la versione di ScavTrap) ---
 	c.attack(b.getName());
 	b.takeDamage(c.getAttackDamage());
 	b.beRepaired(10);
 
-	// --- Test highFivesGuys ---
+	// --- Test funzioni speciali ereditate da entrambi i parent ---
+	a.guardGate();
 	a.highFivesGuys();
 
 	// --- Test attack con 0 hitPoints ---
 	{
-		FragTrap dying("Morente");
+		DiamondTrap dying("Morente");
 		dying.takeDamage(100);
 		dying.attack("qualcuno");
 	}
 
-	// --- Test attack con 0 energyPoints ---
+	// --- Test attack con 0 energyPoints (DiamondTrap usa 50 energy, da ScavTrap) ---
 	{
-		FragTrap tired("Stanco");
-		for (int i = 0; i < 100; i++)
+		DiamondTrap tired("Stanco");
+		for (int i = 0; i < 50; i++)
 			tired.attack("dummy");
 		tired.attack("dummy");
 	}
