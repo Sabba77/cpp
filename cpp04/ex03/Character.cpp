@@ -44,10 +44,9 @@ Character& Character::operator=(const Character& other)
 
 Character::~Character()
 {
-	std::cout << "CHARACTER DESTRUCTOR CALLED!" << std::endl;
-
 	for (int i = 0; i < 4; i++)
 		delete materiaArray[i];
+	std::cout << "CHARACTER DESTRUCTOR CALLED!" << std::endl;
 }
 
 const std::string&	Character::getName() const
