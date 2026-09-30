@@ -58,7 +58,12 @@ const std::string&	Character::getName() const
 void	Character::equip(AMateria* m)
 {
 	int i = 0;
-	for (i = 0; i < 4; i++)
+	if (m == NULL)
+	{
+		std::cout << "there is no materia to equip" << std::endl;
+		return ;
+	}
+		for (i = 0; i < 4; i++)
 	{
 		if (!materiaArray[i])
 		{
