@@ -98,11 +98,9 @@ int main()
 	std::cout << std::endl << "========== TEST 5: deep copy: copy constructor e operator= ==========" << std::endl;
 	{
 		std::cout << std::endl << "copy constructor :" << std::endl;
-		AMateria*	a = new Ice();
-		AMateria*	b = new Cure();
 		Character	*peppe = new Character("peppe");
-		peppe->equip(a);
-		peppe->equip(b);
+		peppe->equip(new Ice());
+		peppe->equip(new Cure());
 		ICharacter* nino = new Character(*peppe);
 		delete peppe;
 		ICharacter* marco = new Character("marco");
@@ -113,13 +111,13 @@ int main()
 		delete marco;
 
 		
-		/*std::cout << std::endl << "assignment operator :" << std::endl;
-		AMateria*	c = new Ice();
-		AMateria*	d = new Cure();
-		Character	*pino = new Character("pino");
-		pino->equip(c);
-		pino->equip(d);
-		ICharacter* caio;
+		std::cout << std::endl << "assignment operator :" << std::endl;
+		Character*	pino = new Character("pino");
+		pino->equip(new Ice());
+		pino->equip(new Cure());
+		Character* caio = new Character("caio");
+		caio->equip(new Ice());
+		caio->equip(new Ice());
 		*caio = *pino;
 		delete pino;
 		ICharacter* gino = new Character("gino");
@@ -127,13 +125,12 @@ int main()
 		caio->use(1, *gino);
 
 		delete caio;
-		delete gino;*/
+		delete gino;
 	}
-	std::cout << std::endl << "MateriaSource: oltre 4 template e tipo sconosciuto:" << std::endl;
+
+	std::cout << std::endl << "========== TEST 6 : MateriaSource: full inventory and equip(unknown) ==========" << std::endl;
 	{
-
 		IMateriaSource* src2 = new MateriaSource();
-
 		src2->learnMateria(new Ice());
 		src2->learnMateria(new Cure());
 		src2->learnMateria(new Ice());
@@ -141,15 +138,10 @@ int main()
 		src2->learnMateria(new Ice()); // quinta: nessuno slot libero, deve essere scartata senza crash
 
 		ICharacter* test = new Character("test");
-		AMateria* m1 = src2->createMateria("ice");
-		AMateria* m2 = src2->createMateria("cure");
-		AMateria* m3 = src2->createMateria("ice");
-		AMateria* m4 = src2->createMateria("cure");
-
-		test->equip(m1);
-		test->equip(m2);
-		test->equip(m3);
-		test->equip(m4);
+		test->equip(src2->createMateria("ice"));
+		test->equip(src2->createMateria("cure"));
+		test->equip(src2->createMateria("ice"));
+		test->equip(src2->createMateria("cure"));
 
 		ICharacter* target = new Character("target");
 		test->use(0, *target);
