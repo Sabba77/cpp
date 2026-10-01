@@ -1,5 +1,4 @@
-# cpp00-04 y tisabbat
-# C++ — 42 School
+# C++ 00-04 y tisabbat — 42 School
 
 Esercizi dei moduli C++00 → C++04 del curriculum di 42 School, dall'introduzione al linguaggio fino a polimorfismo, classi abstract e interfacce.
 
