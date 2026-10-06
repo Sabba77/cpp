@@ -5,6 +5,7 @@
 
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"
+#define BOLD_CYAN	"\033[1;36m"
 #define RESET   "\033[0m"
 
 class Fixed
