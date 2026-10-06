@@ -3,12 +3,18 @@
 
 # include <string>
 
-class Weapon {
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define	BLUE	"\033[1;36m"
+#define BOLD_BLINK	"\033[1;5;31m"
+#define RESET   "\033[0m"
+
+class Weapon
+{
 	private:
 		std::string _type;
 
 	public:
-		// Serve perché in main viene fatto: Weapon club = Weapon("...");
 		Weapon(std::string const &type);
 		~Weapon();
 

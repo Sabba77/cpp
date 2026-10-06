@@ -6,7 +6,8 @@
 #define BLACK	"\x1b[30m"
 #define RESET	"\x1b[0m"
 
-int main() {
+int main()
+{
 	// Variabile richiesta dal subject
 	std::string str = "HI THIS IS BRAIN";
 
@@ -14,7 +15,8 @@ int main() {
 	std::string *stringPTR = &str;
 
 	// Reference: è un alias di str (non "contiene" un indirizzo separato)
-	std::string &stringREF = str;
+	std::string	&stringREF = str;
+
 
 	// Indirizzi
 	std::cout << BACK_YELLOW << BLACK << "Address of str      : " << &str << std::endl;

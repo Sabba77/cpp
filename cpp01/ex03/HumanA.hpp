@@ -4,7 +4,8 @@
 # include <string>
 # include "Weapon.hpp"
 
-class HumanA {
+class HumanA
+{
 	private:
 		std::string _name;
 		// HumanA è SEMPRE armato: reference obbligatoria, non può essere NULL.

@@ -1,25 +1,23 @@
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-#define RED     "\033[31m"
+# include <string>
+# include <iostream>
+
+#define RED     "\033[31;43m"
 #define GREEN   "\033[32m"
-#define	BLUE	"\033[38;2;41;28;230m"
-#define	YELLOW	"\033[38;2;125;123;12m"
+#define	BLUE	"\033[1;36m"
+#define BOLD_BLINK	"\033[1;5;31m"
 #define RESET   "\033[0m"
 
-
-# include <string>
-
-class Zombie {
+class Zombie
+{
 	private:
 		std::string _name;
 
 	public:
-		// Costruttore di default: crea uno zombie senza nome (utile per esempi/debug).
 		Zombie();
-		// Costruttore "comodo": crea e inizializza direttamente il nome.
 		Zombie(std::string const &name);
-		// Distruttore: stampa un messaggio per capire quando lo zombie viene distrutto.
 		~Zombie();
 
 		// Stampa: <name>: BraiiiiiiinnnzzzZ...
@@ -30,11 +28,9 @@ class Zombie {
 };
 
 // Crea uno Zombie in HEAP (con new) e restituisce il puntatore.
-// Chi chiama questa funzione deve poi fare delete.
 Zombie* newZombie(std::string name);
 
 // Crea uno Zombie in STACK (variabile locale), lo fa annunciare e poi termina.
-// La distruzione avviene automaticamente quando la funzione finisce.
 void randomChump(std::string name);
 
 #endif

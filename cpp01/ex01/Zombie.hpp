@@ -1,29 +1,26 @@
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
+# include <iostream>
 # include <string>
 
-class Zombie {
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define	BLUE	"\033[1;36m"
+#define BOLD_BLINK	"\033[1;5;31m"
+#define RESET   "\033[0m"
+
+class Zombie
+{
 	private:
-		// Il subject richiede un attributo string "name" (qui lo chiamiamo _name).
 		std::string _name;
 
 	public:
-		// Serve un costruttore di default perché per creare un array con:
-		//   new Zombie[N]
-		// C++ costruisce N oggetti usando il costruttore di default.
 		Zombie();
-
-		// Costruttore comodo per creare uno zombie già nominato.
 		Zombie(std::string const &name);
-
-		// Distruttore: stampa un messaggio con il nome (debug richiesto dal subject).
 		~Zombie();
 
-		// Stampa: <name>: BraiiiiiiinnnzzzZ...
 		void announce(void) const;
-
-		// Per "inizializzare" gli zombie dell'horde dopo la new[]
 		void setName(std::string const &name);
 };
 

@@ -4,7 +4,8 @@
 # include <string>
 # include "Weapon.hpp"
 
-class HumanB {
+class HumanB
+{
 	private:
 		std::string _name;
 		// HumanB può NON avere un'arma: puntatore, può essere NULL.
