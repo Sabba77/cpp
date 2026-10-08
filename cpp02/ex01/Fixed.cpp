@@ -55,6 +55,7 @@ int	Fixed::getRawBits(void) const
 
 void	Fixed::setRawBits(int const raw)
 {
+	std::cout << GREEN << "SET NUMBER " << raw << RESET << std::endl;
 	this->_rawBits = raw;
 }
 float	Fixed::toFloat(void) const

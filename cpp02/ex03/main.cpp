@@ -12,13 +12,13 @@ int main(void)
 	Point	d(7, 3);
 	Point	e(13, 3);
 	Point	f(10, 10);
-	Point	pOut2(9, 4);
+	Point	pOut2(9, 3);
 
-	std::cout << "point in : "  << bsp(a, b, c, pIn) << std::endl;
+	std::cout << BOLD_CYAN << "point in : "  << bsp(a, b, c, pIn) << std::endl;
 	std::cout << "point out : " << bsp(a, b, c, pOut) << std::endl;
 	std::cout << "point p = a : " << bsp(a, b, c, a) << std::endl;
 	std::cout << "point pEdge : " << bsp(a, b, c, pEdge) << std::endl;
 
-	std::cout << "point pOut2 : " << bsp(d, e, f, pOut2) << std::endl;
+	std::cout << "point pOut2 : " << bsp(d, e, f, pOut2) << RESET << std::endl;
 	return 0;
 }

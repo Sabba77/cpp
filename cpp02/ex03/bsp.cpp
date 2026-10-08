@@ -18,8 +18,6 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 		return true;
 	else if (cross1 < z && cross2 < z && cross3 < z)
 		return true;
-	else if (cross1 == z || cross2 == z || cross3 == z)
-		return false;
 	else
 		return false;
 }
