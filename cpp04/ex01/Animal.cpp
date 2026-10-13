@@ -2,22 +2,22 @@
 
 Animal::Animal() : type("Animal")
 {
-	std::cout << "DEFAULT CONSTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "DEFAULT CONSTRUCTOR CALLED!" << RESET << std::endl;
 }
 
 Animal::Animal(const Animal& other) : type(other.type)
 {
-	std::cout << "COPY CONSTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "COPY CONSTRUCTOR CALLED!" << RESET << std::endl;
 }
 
 Animal::Animal(const std::string &otherType) : type(otherType)
 {
-	std::cout << "DEFAULT CONSTRUCTOR WITH NAME CALLED!" << std::endl;
+	std::cout << GREEN << "DEFAULT CONSTRUCTOR WITH NAME CALLED!" << RESET << std::endl;
 }
 
 Animal& Animal::operator=(const Animal& other)
 {
-	std::cout << "COPY ASSIGNMENT OPERATOR CALLED!" << std::endl;
+	std::cout << GREEN << "COPY ASSIGNMENT OPERATOR CALLED!" << RESET << std::endl;
 
 	if (this == &other)
 		return *this;
@@ -27,7 +27,7 @@ Animal& Animal::operator=(const Animal& other)
 
 Animal::~Animal()
 {
-	std::cout << "DESTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "DESTRUCTOR CALLED!" << RESET << std::endl;
 }
 
 std::string	Animal::getType() const
@@ -37,5 +37,5 @@ std::string	Animal::getType() const
 
 void Animal::makeSound() const
 {
-	std::cout << "Some random animal sounds..." << std::endl;
+	std::cout << GREEN << "Some random animal sounds..." << RESET << std::endl;
 }

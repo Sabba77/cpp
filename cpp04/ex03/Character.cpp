@@ -1,4 +1,4 @@
-#include "AMateria.hpp"
+#include "Character.hpp"
 
 Character::Character() : name("noName")
 {

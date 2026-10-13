@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define BOLD_CYAN	"\033[1;36m"
+#define RESET   "\033[0m"
+
 class	Animal
 {
 protected:
@@ -21,31 +26,6 @@ public:
 	std::string getType() const;
 	virtual void	makeSound() const;
 
-};
-
-
-class	Cat : public Animal
-{
-public:
-	Cat();
-	Cat(const Cat &otherCat);
-
-	Cat& operator=(const Cat& otherCat);
-	~Cat();
-
-	void	makeSound() const;
-};
-
-class	Dog : public Animal
-{
-public:
-	Dog();
-	Dog(const Dog &otherDog);
-
-	Dog& operator=(const Dog& otherDog);
-	~Dog();
-
-	void	makeSound() const;
 };
 
 #endif

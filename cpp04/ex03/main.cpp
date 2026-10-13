@@ -1,9 +1,13 @@
 #include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "MateriaSource.hpp"
+#include "Character.hpp"
 
 int main()
 {
 
-	std::cout << "========== TEST 0: main test ==========" << std::endl;
+	std::cout << BOLD_CYAN << "========== TEST 0: main test ==========" << RESET << std::endl;
 	{
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
@@ -22,7 +26,7 @@ int main()
 		delete src;
 	}
 
-	std::cout << std::endl << "========== TEST 1: clone() and polimorfism test ==========" << std::endl;
+	std::cout << std::endl << BOLD_CYAN << "========== TEST 1: clone() and polimorfism test ==========" << RESET << std::endl;
 	{
 		AMateria*	a = new Ice();
 		AMateria* aClone = a->clone();
@@ -44,7 +48,7 @@ int main()
 		delete bClone;
 	}
 
-	std::cout << std::endl << "========== TEST 2: equip() full inventory and NULL materia ==========" << std::endl;
+	std::cout << std::endl << BOLD_CYAN << "========== TEST 2: equip() full inventory and NULL materia ==========" << RESET << std::endl;
 	{
 		std::cout << "full inventory test :" << std::endl;
 		AMateria* materia1 = new Ice();
@@ -76,7 +80,7 @@ int main()
 		delete anna;
 	}
 
-	std::cout << std::endl << "========== TEST 3 - 4: unequip() and reuse - use() out range ==========" << std::endl;
+	std::cout << std::endl << BOLD_CYAN << "========== TEST 3 - 4: unequip() and reuse - use() out range ==========" << RESET << std::endl;
 	{
 		std::cout << std::endl << "unequip() and reuse test :" << std::endl;
 		AMateria* a = new Ice();
@@ -95,7 +99,7 @@ int main()
 		delete anna;
 	}
 
-	std::cout << std::endl << "========== TEST 5: deep copy: copy constructor e operator= ==========" << std::endl;
+	std::cout << std::endl << BOLD_CYAN << "========== TEST 5: deep copy: copy constructor e operator= ==========" << RESET << std::endl;
 	{
 		std::cout << std::endl << "copy constructor :" << std::endl;
 		Character	*peppe = new Character("peppe");
@@ -128,7 +132,7 @@ int main()
 		delete gino;
 	}
 
-	std::cout << std::endl << "========== TEST 6 : MateriaSource: full inventory and equip(unknown) ==========" << std::endl;
+	std::cout << std::endl << BOLD_CYAN << "========== TEST 6 : MateriaSource: full inventory and equip(unknown) ==========" << RESET << std::endl;
 	{
 		IMateriaSource* src2 = new MateriaSource();
 		src2->learnMateria(new Ice());

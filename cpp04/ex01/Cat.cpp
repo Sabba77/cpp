@@ -1,20 +1,20 @@
-#include "Animal.hpp"
+#include "Cat.hpp"
 
 Cat::Cat() : Animal("Cat")
 {
-	std::cout << "CAT DEFAULT CONSTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "CAT DEFAULT CONSTRUCTOR CALLED!" << RESET << std::endl;
 	catBrain = new Brain();
 }
 
 Cat::Cat(const Cat& other) : Animal(other)
 {
-	std::cout << "CAT COPY CONSTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "CAT COPY CONSTRUCTOR CALLED!" << RESET << std::endl;
 	catBrain = new Brain(*other.catBrain);
 }
 
 Cat& Cat::operator=(const Cat& other)
 {
-	std::cout << "CAT COPY ASSIGNMENT OPERATOR CALLED!" << std::endl;
+	std::cout << GREEN << "CAT COPY ASSIGNMENT OPERATOR CALLED!" << RESET << std::endl;
 
 	if (this == &other)
 		return *this;
@@ -26,7 +26,7 @@ Cat& Cat::operator=(const Cat& other)
 Cat::~Cat()
 {
 	delete catBrain;
-	std::cout << "CAT DESTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "CAT DESTRUCTOR CALLED!" << RESET << std::endl;
 }
 
 void Cat::makeSound() const

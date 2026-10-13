@@ -1,8 +1,10 @@
 #include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int main()
 {
-	std::cout << "========| Test 0: MAIN TEST |========" << std::endl << std::endl;
+	std::cout << BOLD_CYAN << "========| Test 0: MAIN TEST |========" << RESET << std::endl << std::endl;
 	{
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
@@ -10,7 +12,7 @@ int main()
 		delete i;
 	}
 
-	std::cout << "========| Test 1: ARRAY TEST |========" << std::endl << std::endl;
+	std::cout << BOLD_CYAN << "========| Test 1: ARRAY TEST |========" << RESET << std::endl << std::endl;
 	{
 		Animal* AnimalArray[10];
 		for (int i = 0; i < 5; i++)
@@ -23,7 +25,7 @@ int main()
 			delete AnimalArray[i];
 	}
 
-	std::cout << "========| Test 2: DEEP COPY CONSTRUCTOR (DOG) |========" << std::endl << std::endl;
+	std::cout << BOLD_CYAN << "========| Test 2: DEEP COPY CONSTRUCTOR (DOG) |========" << RESET << std::endl << std::endl;
 	{
 		Dog a;
 		a.getBrain()->setIdeas("PEPPE", 0);
@@ -40,7 +42,7 @@ int main()
 		std::cout << "idea b-> " << b.getBrain()->getIdeas(0) << std::endl;
 	}
 
-	std::cout << "========| Test 3: DEEP COPY ASSIGNMENT (DOG) |========" << std::endl << std::endl;
+	std::cout << BOLD_CYAN << "========| Test 3: DEEP COPY ASSIGNMENT (DOG) |========" << RESET << std::endl << std::endl;
 	{
 		Dog a;
 		a.getBrain()->setIdeas("PEPPE", 0);
@@ -63,7 +65,7 @@ int main()
 		std::cout << "idea a-> " << a.getBrain()->getIdeas(0) << std::endl;
 	}
 
-	std::cout << "========| Test 4: DEEP COPY (CAT) |========" << std::endl << std::endl;
+	std::cout << BOLD_CYAN << "========| Test 4: DEEP COPY (CAT) |========" << RESET << std::endl << std::endl;
 	{
 		Cat a;
 		a.getBrain()->setIdeas("PEPPE", 0);
@@ -81,7 +83,7 @@ int main()
 		std::cout << "idea c-> " << c.getBrain()->getIdeas(0) << std::endl;
 	}
 
-	std::cout << "========| Test 5: COPY DESTROYED IN A SCOPE |========" << std::endl << std::endl;
+	std::cout << BOLD_CYAN << "========| Test 5: COPY DESTROYED IN A SCOPE |========" << RESET << std::endl << std::endl;
 	{
 		Dog original;
 		original.getBrain()->setIdeas("PEPPE", 0);
@@ -95,7 +97,7 @@ int main()
 		std::cout << "idea original-> " << original.getBrain()->getIdeas(0) << std::endl;
 	}
 
-	std::cout << "========| Test 6: INDEX OUT OF RANGE |========" << std::endl << std::endl;
+	std::cout << BOLD_CYAN << "========| Test 6: INDEX OUT OF RANGE |========" << RESET << std::endl << std::endl;
 	{
 		Cat cat;
 		cat.getBrain()->setIdeas("PEPPE", 100);

@@ -3,24 +3,27 @@
 int main(void)
 {
 	// --- Test costruzione e distruzione ---
-	DiamondTrap	a;
-	DiamondTrap	b(a);
-	DiamondTrap	c("Peppino");
+	{
+		DiamondTrap	a;
+		DiamondTrap	b(a);
+		DiamondTrap	c("Peppino");
 
-	// --- Test whoAmI ---
-	a.whoAmI();
-	c.whoAmI();
+		// --- Test whoAmI ---
+		a.whoAmI();
+		c.whoAmI();
 
-	// --- Test attack normale (deve usare la versione di ScavTrap) ---
-	c.attack(b.getName());
-	b.takeDamage(c.getAttackDamage());
-	b.beRepaired(10);
+		// --- Test attack normale (deve usare la versione di ScavTrap) ---
+		c.attack(b.getName());
+		b.takeDamage(c.getAttackDamage());
+		b.beRepaired(10);
 
-	// --- Test funzioni speciali ereditate da entrambi i parent ---
-	a.guardGate();
-	a.highFivesGuys();
+		// --- Test funzioni speciali ereditate da entrambi i parent ---
+		a.guardGate();
+		a.highFivesGuys();
+	}
 
 	// --- Test attack con 0 hitPoints ---
+	std::cout << std::endl << "TEST ATTACK WITH 0 HITPOINTS" << std::endl;
 	{
 		DiamondTrap dying("Morente");
 		dying.takeDamage(100);
@@ -28,6 +31,7 @@ int main(void)
 	}
 
 	// --- Test attack con 0 energyPoints (DiamondTrap usa 50 energy, da ScavTrap) ---
+	std::cout << std::endl << "TEST ATTACK WITH 0 ENERGIPOINTS" << std::endl;
 	{
 		DiamondTrap tired("Stanco");
 		for (int i = 0; i < 50; i++)

@@ -1,9 +1,12 @@
 #include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 #include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int	main()
 {
-	std::cout << "--- Subject ---" << std::endl;
+	std::cout << BOLD_CYAN << "--- Subject ---" << RESET << std::endl;
 	{
 		const Animal* meta = new Animal();
 		const Animal* j = new Dog();
@@ -18,7 +21,7 @@ int	main()
 		delete j;
 		delete i;
 	}
-	std::cout << std::endl << "--- Wrong ---" << std::endl;
+	std::cout << BOLD_CYAN << std::endl << "--- Wrong ---" << RESET << std::endl;
 	{
 		const WrongAnimal* w = new WrongCat();
 		const WrongCat* c = new WrongCat();
@@ -28,7 +31,7 @@ int	main()
 		delete w;
 		delete c;
 	}
-	std::cout << std::endl << "--- Array ---" << std::endl;
+	std::cout << BOLD_CYAN << std::endl << "--- Array ---" << RESET << std::endl;
 	{
 		const Animal* zoo[4];
 
@@ -40,7 +43,7 @@ int	main()
 		for (int k = 0; k < 4; k++)
 			delete zoo[k];
 	}
-	std::cout << std::endl << "--- Copy ---" << std::endl;
+	std::cout << BOLD_CYAN << std::endl << "--- Copy ---" << RESET << std::endl;
 	{
 		Dog d1;
 		Dog d2(d1);

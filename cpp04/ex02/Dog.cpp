@@ -1,20 +1,20 @@
-#include "Animal.hpp"
+#include "Dog.hpp"
 
 Dog::Dog() : Animal("Dog")
 {
-	std::cout << "DOG DEFAULT CONSTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "DOG DEFAULT CONSTRUCTOR CALLED!" << RESET << std::endl;
 	dogBrain = new Brain();
 }
 
 Dog::Dog(const Dog& other) : Animal(other)
 {
-	std::cout << "DOG COPY CONSTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "DOG COPY CONSTRUCTOR CALLED!" << RESET << std::endl;
 	dogBrain = new Brain(*other.dogBrain);
 }
 
 Dog& Dog::operator=(const Dog& other)
 {
-	std::cout << "DOG COPY ASSIGNMENT OPERATOR CALLED!" << std::endl;
+	std::cout << GREEN << "DOG COPY ASSIGNMENT OPERATOR CALLED!" << RESET << std::endl;
 
 	if (this == &other)
 		return *this;
@@ -26,7 +26,7 @@ Dog& Dog::operator=(const Dog& other)
 Dog::~Dog()
 {
 	delete dogBrain;
-	std::cout << "DOG DESTRUCTOR CALLED!" << std::endl;
+	std::cout << GREEN << "DOG DESTRUCTOR CALLED!" << RESET << std::endl;
 }
 
 void Dog::makeSound() const
