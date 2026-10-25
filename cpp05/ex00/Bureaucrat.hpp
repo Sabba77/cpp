@@ -19,16 +19,17 @@ class	Bureaucrat
 private:
 	const std::string	name;
 	int					grade;
-	void	gradeCheck(int grade) const;
+
+	void	gradeCheck(int _grade) const;
 
 public:
 	Bureaucrat();
-	Bureaucrat(const std::string otherName, const int otherGrade);
+	Bureaucrat(const std::string& otherName, const int otherGrade);
 
 	~Bureaucrat();
 
-	std::string		getName(void) const;
-	int	getGrade(void) const;
+	const std::string&	getName(void) const;
+	int				getGrade(void) const;
 
 	void	incrementGrade(void);
 	void	decrementGrade(void);

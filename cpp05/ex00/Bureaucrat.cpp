@@ -5,7 +5,7 @@ Bureaucrat::Bureaucrat() : name("noName") , grade(150)
 	std::cout << BLACK_GRAY << "[BUREAUCRAT " << name << "] DEFAULT CONSTRUCTOR CALLED" << RESET << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string otherName, const int otherGrade) : name(otherName) , grade(otherGrade)
+Bureaucrat::Bureaucrat(const std::string& otherName, const int otherGrade) : name(otherName) , grade(otherGrade)
 {
 	std::cout << BLACK_GRAY << "[BUREAUCRAT " << name << "] PARAMETRIC CONSTRUCTOR CALLED" << RESET << std::endl;
 
@@ -18,7 +18,7 @@ Bureaucrat::~Bureaucrat()
 	std::cout << BLACK_GRAY << "[BUREAUCRAT " << name << "] DESTRUCTOR CALLED" << RESET << std::endl;
 }
 
-std::string	Bureaucrat::getName() const
+const std::string&	Bureaucrat::getName() const
 {
 	return name;
 }
