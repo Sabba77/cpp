@@ -8,7 +8,7 @@ Bureaucrat::Bureaucrat() : name("noName") , grade(150)
 Bureaucrat::Bureaucrat(const std::string& otherName, const int otherGrade) : name(otherName) , grade(otherGrade)
 {
 	std::cout << BLACK_GRAY << "[BUREAUCRAT " << name << "] PARAMETRIC CONSTRUCTOR CALLED" << RESET << std::endl;
-
+	
 	gradeCheck(grade);
 	std::cout << GREEN << "Grade was set at " << grade << "!" << RESET << std::endl;
 }
