@@ -1,90 +1,281 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+
+#include <ctime>
+
 
 int	main(void)
 {
-	std::cout << BOLD_CYAN << "========== TEST 0: constr, operator<< and destr ==========" << RESET << std::endl;
-	{
-		Form	a("peppe", 50, 10);
-		Form	b(a);
-		Form	c = b;
+	srand(time(NULL)); // for rand()
 
-		std::cout << c << std::endl;
-	}
-	std::cout << BOLD_CYAN << "========== TEST 1: invalid grade ==========" << RESET << std::endl;
+	std::cout << BOLD_CYAN << "========== TEST 0: default constructor with noName and new ==========" << RESET << std::endl;
 	{
 		try
 		{
-			Form	a("peppe", -20, 10);
+			AForm* a = new ShrubberyCreationForm();
+			AForm* b = new RobotomyRequestForm();
+			AForm* c = new PresidentialPardonForm();
+			Bureaucrat pep("peppe", 5);
 
+			pep.executeForm(*a);
+			pep.executeForm(*b);
+			pep.executeForm(*c);
+
+			delete a;
+			delete b;
+			delete c;
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+	}
+	std::cout << BOLD_CYAN << "========== TEST 1: ShrubberyCreation ==========" << RESET << std::endl;
+	{
+		std::cout << BOLD_CYAN << "Grade OK:" << RESET << std::endl;
+		try
+		{
+			ShrubberyCreationForm	a("PeppeForm");
+			Bureaucrat				b("Peppe", 135);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			b.executeForm(a);
 			std::cout << a << std::endl;
 		}
-		catch(const std::exception& e)
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+		std::cout << BOLD_CYAN << "\nOK sign, NO execute:" << RESET << std::endl;
+		try
+		{
+			ShrubberyCreationForm	a("PeppeForm");
+			Bureaucrat				b("Peppe", 140);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			b.executeForm(a);
+			std::cout << a << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+		std::cout << BOLD_CYAN << "\nNO sign, NO execute:" << RESET << std::endl;
+		try
+		{
+			ShrubberyCreationForm	a("PeppeForm");
+			Bureaucrat				b("Peppe", 146);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			b.executeForm(a);
+			std::cout << a << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+		std::cout << BOLD_CYAN << "\nExecute with no sign:" << RESET << std::endl;
+		try
+		{
+			ShrubberyCreationForm	a("PeppeForm");
+			Bureaucrat				b("Peppe", 130);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			a.execute(b);
+			std::cout << a << std::endl;
+		}
+		catch (const std::exception& e)
 		{
 			std::cout << e.what() << '\n';
 		}
 	}
-	std::cout << BOLD_CYAN << "========== TEST 2: beSigned() ==========" << RESET << std::endl;
+	std::cout << BOLD_CYAN << "========== TEST 2: RobotomyRequest ==========" << RESET << std::endl;
 	{
+		std::cout << BOLD_CYAN << "\nGrade OK, execute in loop, check rand():" << RESET << std::endl;
 		try
 		{
-			Form	a("Peppe Form", 10, 10);
-			Bureaucrat b("Peppe", 7);
-
-			std::cout << a << '\n' << b << std::endl;
-
-			std::cout << std::boolalpha << a.getSigned() << std::endl;
-			a.beSigned(b);			
-			std::cout << a.getSigned() << std::noboolalpha << std::endl;
-
+			RobotomyRequestForm	a("PinoForm");
+			Bureaucrat			b("Pino", 45);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			for (int i = 0; i < 10; i++)
+				b.executeForm(a);
 		}
-		catch(const std::exception& e)
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+		std::cout << BOLD_CYAN << "\nOK sign, NO execute:" << RESET << std::endl;
+		try
+		{
+			RobotomyRequestForm	a("PinoForm");
+			Bureaucrat			b("Pino", 72);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			b.executeForm(a);
+			std::cout << a << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+		std::cout << BOLD_CYAN << "\nNO sign, NO execute:" << RESET << std::endl;
+		try
+		{
+			RobotomyRequestForm	a("PinoForm");
+			Bureaucrat			b("Pino", 73);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			b.executeForm(a);
+			std::cout << a << std::endl;
+		}
+		catch (const std::exception& e)
 		{
 			std::cout << e.what() << '\n';
 		}
 	}
-	std::cout << BOLD_CYAN << "========== TEST 3: signForm() ==========" << RESET << std::endl;
+	std::cout << BOLD_CYAN << "========== TEST 3: PresidentialPardon ==========" << RESET << std::endl;
 	{
+		std::cout << BOLD_CYAN << "\nGrade OK:" << RESET << std::endl;
 		try
 		{
-			Bureaucrat	a("Pino", 11);
-			Form		b("NoPinoForm", 10, 10);
-			Form		c("YesPinoForm", 20, 10);
-
-			std::cout << a << '\n' << b << std::endl;
-
-			std::cout << BOLD_CYAN << "no sign pino form :" << RESET << std::endl;
-			std::cout << std::boolalpha << b.getSigned() << std::endl;
-			a.signForm(b);
-			std::cout << std::boolalpha << b.getSigned() << std::noboolalpha << std::endl;
-
-			std::cout << BOLD_CYAN << "yes sign pino form :" << RESET << std::endl;
-			std::cout << std::boolalpha << c.getSigned() << std::endl;
-			a.signForm(c);
-			std::cout << std::boolalpha << c.getSigned() << std::noboolalpha << std::endl;
+			PresidentialPardonForm	a("NinoForm");
+			Bureaucrat				b("Nino", 5);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			b.executeForm(a);
+			std::cout << a << std::endl;
 		}
-		catch(const std::exception& e)
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+		std::cout << BOLD_CYAN << "\nOK sign, NO execute:" << RESET << std::endl;
+		try
+		{
+			PresidentialPardonForm	a("NinoForm");
+			Bureaucrat				b("Nino", 25);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			b.executeForm(a);
+			std::cout << a << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+		std::cout << BOLD_CYAN << "\nNO sign, NO execute:" << RESET << std::endl;
+		try
+		{
+			PresidentialPardonForm	a("NinoForm");
+			Bureaucrat				b("Nino", 26);
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			b.signForm(a);
+			b.executeForm(a);
+			std::cout << a << std::endl;
+		}
+		catch (const std::exception& e)
 		{
 			std::cout << e.what() << '\n';
 		}
 	}
-	std::cout << BOLD_CYAN << "========== TEST 4: Form with invalide grade ==========" << RESET << std::endl;
+
+	std::cout << BOLD_CYAN << "========== TEST 4: execute() ==========" << RESET << std::endl;
 	{
+		std::cout << BOLD_CYAN << "\nerror: grade too low" << RESET << std::endl;
 		try
 		{
-			Bureaucrat	a("Pino", 1);
-			Form		b("NoPinoForm", 151, 150);
-
-			std::cout << a << '\n' << b << std::endl;
-
-			std::cout << std::boolalpha << b.getSigned() << std::endl;
-			a.signForm(b);
-			std::cout << std::boolalpha << b.getSigned() << std::noboolalpha << std::endl;
+			PresidentialPardonForm	a("NanoForm");
+			Bureaucrat				b("Nano", 25);
+			a.execute(b);
 
 		}
-		catch(const std::exception& e)
+		catch (const std::exception& e)
 		{
 			std::cout << e.what() << '\n';
 		}
+
+		std::cout << BOLD_CYAN << "\nerror: not signed" << RESET << std::endl;
+		try
+		{
+			PresidentialPardonForm	a("NanoForm");
+			Bureaucrat				b("Nano", 5);
+			a.execute(b);
+
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+	}
+
+	std::cout << BOLD_CYAN << "========== TEST 5: copy and assignamet check _signed ==========" << RESET << std::endl;
+	{
+		std::cout << BOLD_CYAN << "\nCopy constructor" << RESET << std::endl;
+		try
+		{
+			PresidentialPardonForm	a("signForm");
+			Bureaucrat				b("Sign", 5);
+
+			std::cout << a << std::endl;
+			a.beSigned(b);
+			std::cout << a << std::endl;
+
+			PresidentialPardonForm	c(a);
+			std::cout << c << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+
+		std::cout << BOLD_CYAN << "\nCopy assignment operator" << RESET << std::endl;
+		try
+		{
+			PresidentialPardonForm	a("signForm");
+			PresidentialPardonForm	c("noSignForm");
+			Bureaucrat				b("Sign", 5);
+
+			std::cout << a << std::endl;
+			std::cout << c << std::endl;
+			a.beSigned(b);
+			std::cout << a << std::endl;
+
+			c = a;
+			std::cout << c << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << e.what() << '\n';
+		}
+	}
+	std::cout << BOLD_CYAN << "--- TEST: errore apertura file ---" << RESET << std::endl;
+	{
+
+		Bureaucrat boss("Boss", 1);
+		ShrubberyCreationForm bad("cartella_inesistente/home");
+
+		boss.signForm(bad);
+		boss.executeForm(bad);
 	}
 }

@@ -6,8 +6,8 @@ AForm::AForm() : name("noName"), _signed(false), gradeToSign(150), gradeToExecut
 	std::cout << BLACK_GRAY << "[AForm " << name << "] DEFAULT CONSTRUCTOR CALLED" << RESET << std::endl;
 }
 
-AForm::AForm(const AForm& otherAAForm) : name(otherAAForm.name), _signed(otherAAForm._signed),
-	gradeToSign(otherAAForm.gradeToSign), gradeToExecute(otherAAForm.gradeToExecute)
+AForm::AForm(const AForm& otherAForm) : name(otherAForm.name), _signed(otherAForm._signed),
+	gradeToSign(otherAForm.gradeToSign), gradeToExecute(otherAForm.gradeToExecute)
 {
 	std::cout << BLACK_GRAY << "[AForm " << name << "] COPY CONSTRUCTOR CALLED" << RESET << std::endl;
 }
@@ -35,10 +35,10 @@ AForm& AForm::operator=(const AForm& otherAForm)
 	return *this;
 }
 
-std::ostream& operator<<(std::ostream& out, const AForm& AForm)
+std::ostream& operator<<(std::ostream& out, const AForm& aform)
 {
-	out << AForm.getName() << ", AForm signed " << AForm.getSigned() << ". Grade to sign: "
-		<< AForm.getGradeToSign() << ". Grade to execute: " << AForm.getGradeToExecute() << ".";
+	out << aform.getName() << ", AForm signed " << std::boolalpha << aform.getSigned() << std::noboolalpha << ". Grade to sign: "
+		<< aform.getGradeToSign() << ". Grade to execute: " << aform.getGradeToExecute() << ".";
 	return out;
 }
 

@@ -14,7 +14,7 @@
 #define LOWEST_POSSIBLE_GRADE 150
 #define HIGHEST_POSSIBLE_GRADE 1
 
-class	Form;
+class	AForm;
 
 class	Bureaucrat
 {
@@ -48,7 +48,8 @@ public:
 		virtual const char* what() const throw();
 	};
 
-	void	signForm(AForm& aForm);
+	void	signForm(AForm& form);
+	void	executeForm(AForm const& form) const;
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& bureaucrat);
