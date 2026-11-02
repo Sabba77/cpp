@@ -12,7 +12,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& otherTarget)
-	: AForm(otherTarget + "Shrubbery", 145, 137), target(otherTarget)
+	: AForm(otherTarget + "_Shrubbery", 145, 137), target(otherTarget)
 {
 	std::cout << BLACK_GRAY << "SHRUBBERY PARAMETRIC CONSTRUCTOR CALLED" << RESET << std::endl;
 }

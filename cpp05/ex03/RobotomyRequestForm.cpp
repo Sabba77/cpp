@@ -12,7 +12,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& otherTarget)
-	: AForm(otherTarget + "Robotomy", 72, 45), target(otherTarget)
+	: AForm(otherTarget + "_Robotomy", 72, 45), target(otherTarget)
 {
 	std::cout << BLACK_GRAY << "ROBOTOMY PARAMETRIC CONSTRUCTOR CALLED" << RESET << std::endl;
 }

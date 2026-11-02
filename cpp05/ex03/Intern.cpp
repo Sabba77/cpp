@@ -25,39 +25,46 @@ Intern::~Intern()
 	std::cout << BLACK_GRAY << "INTERN DESTRUCTOR CALLED" << RESET << std::endl;
 }
 
-AForm*	Intern::makeShrubbery(const std::string& target)
+static AForm*	makeShrubbery(const std::string& target)
 {
 	return new ShrubberyCreationForm(target);
 }
 
-AForm*	Intern::makeRobotomy(const std::string& target)
+static AForm*	makeRobotomy(const std::string& target)
 {
 	return new RobotomyRequestForm(target);
 }
 
-AForm* Intern::makePresidential(const std::string& target)
+static AForm*	makePresidential(const std::string& target)
 {
 	return new PresidentialPardonForm(target);
 }
 
 AForm* Intern::makeForm(const std::string& form, const std::string& target)
 {
-	AForm* (Intern::*functionForm[3])(const std::string&) =
-	{ &Intern::makeShrubbery, &Intern::makeRobotomy, &Intern::makePresidential };
-
-	std::string	possibleForm[9] =
-	{ "ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm",
-		"ShrubberyCreation", "RobotomyRequest", "PresidentialPardon",
-		"shrubbery creation", "robotomy request", "presidential pardon" };
-	
-	for (int i = 0; i < 9; i++)
+	static const FormEntry	table[] =
 	{
-		if (form == possibleForm[i])
+		{ "ShrubberyCreationForm",	makeShrubbery },
+		{ "ShrubberyCreation",		makeShrubbery },
+		{ "shrubbery creation",		makeShrubbery },
+		{ "RobotomyRequestForm",	makeRobotomy },
+		{ "RobotomyRequest",		makeRobotomy },
+		{ "robotomy request",		makeRobotomy },
+		{ "PresidentialPardonForm",	makePresidential },
+		{ "PresidentialPardon",		makePresidential },
+		{ "presidential pardon",	makePresidential }
+	};
+
+	const size_t	size = sizeof(table) / sizeof(table[0]);
+
+	for (size_t i = 0; i < size; i++)
+	{
+		if (form == table[i].name)
 		{
 			std::cout << GREEN << "Intern creates " << form << RESET << std::endl;
-			return (this->*functionForm[i % 3])(target);
+			return table[i].create(target);
 		}
 	}
-	throw std::runtime_error("Unable to create, form does't exist!");
+	std::cout << RED << "Intern error: form \"" << form << "\" doesn't exist!" << RESET << std::endl;
 	return NULL;
 }

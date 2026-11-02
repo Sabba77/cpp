@@ -9,16 +9,20 @@ class AForm;
 
 class	Intern
 {
+private:
+	struct FormEntry
+	{
+		const char*	name;
+		AForm*		(*create)(const std::string&);
+	};
+
 public:
 	Intern();
 	Intern(const Intern&);
 	Intern& operator=(const Intern&);
 	~Intern();
 	
-	AForm*	makeForm(const std::string& form, const std::string& target);
-	AForm*	makeShrubbery(const std::string& target);
-	AForm*	makeRobotomy(const std::string& target);
-	AForm*	makePresidential(const std::string& target);
+	AForm* makeForm(const std::string& form, const std::string& target);
 
 };
 

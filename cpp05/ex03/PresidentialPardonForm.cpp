@@ -12,7 +12,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& oth
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& otherTarget)
-	: AForm(otherTarget + "Presidential", 25, 5), target(otherTarget)
+	: AForm(otherTarget + "_Presidential", 25, 5), target(otherTarget)
 {
 	std::cout << BLACK_GRAY << "PRESIDENTIAL PARAMETRIC CONSTRUCTOR CALLED" << RESET << std::endl;
 }
