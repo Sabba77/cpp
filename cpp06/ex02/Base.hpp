@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
+
 
 #include "Color.h"
 

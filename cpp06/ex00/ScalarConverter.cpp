@@ -116,7 +116,7 @@ static void	printPseudo(const std::string& str)
 
 static void	printChar(const double d)
 {
-	if (d < CHAR_MIN || d > CHAR_MAX)
+	if (d < 0 || d > CHAR_MAX)
 		std::cout << "char: impossible" << std::endl;
 	else if (!std::isprint(static_cast<unsigned char>(static_cast<char>(d))))
 		std::cout << "char: Non displayable" << std::endl;
