@@ -8,16 +8,11 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-/* ---------- helper ---------- */
-
 static void	title(const std::string& s)
 {
 	std::cout << BOLD_CYAN << "\n========== " << s << " ==========" << RESET << std::endl;
 }
 
-// Crea un burocrate col grado dato, prova a firmare e poi a eseguire la form.
-// La form va creata NUOVA dal chiamante per ogni caso (altrimenti risulta gia' firmata).
-// signForm ed executeForm catturano gia' le eccezioni: qui non serve try/catch.
 static void	runCase(AForm& form, int grade)
 {
 	Bureaucrat	b("Burocrate", grade);
@@ -28,7 +23,6 @@ static void	runCase(AForm& form, int grade)
 	std::cout << form << std::endl;
 }
 
-// execute() chiamata direttamente: le eccezioni escono, quindi qui il try/catch serve.
 static void	tryExecute(const AForm& form, const Bureaucrat& b)
 {
 	try
@@ -42,10 +36,6 @@ static void	tryExecute(const AForm& form, const Bureaucrat& b)
 	}
 }
 
-/* ---------- test ---------- */
-
-// Default constructor + new/delete tramite AForm* (controlla il distruttore virtuale)
-// + esecuzione vera di tutte e tre le azioni.
 static void	testPolymorphism()
 {
 	AForm*		forms[3];
@@ -69,10 +59,6 @@ static void	testPolymorphism()
 		delete forms[i];
 }
 
-// Shrubbery: firma 145, esecuzione 137
-// 1, 137   -> firma ok, esecuzione ok (file creato)
-// 138, 145 -> firma ok, esecuzione: grade too low
-// 146      -> firma: grade too low, esecuzione: grade too low (il grado si controlla prima della firma)
 static void	testShrubbery()
 {
 	const int	grades[] = {1, 137, 138, 145, 146};
@@ -84,10 +70,6 @@ static void	testShrubbery()
 	}
 }
 
-// Robotomy: firma 72, esecuzione 45
-// 1, 45    -> tutto ok (successo o fallimento a caso)
-// 46, 72   -> firma ok, esecuzione: grade too low
-// 73       -> firma: grade too low, esecuzione: grade too low
 static void	testRobotomy()
 {
 	const int	grades[] = {1, 45, 46, 72, 73};
@@ -106,10 +88,6 @@ static void	testRobotomy()
 		b.executeForm(form);
 }
 
-// Presidential: firma 25, esecuzione 5
-// 1, 5     -> tutto ok
-// 6, 25    -> firma ok, esecuzione: grade too low
-// 26       -> firma: grade too low, esecuzione: grade too low
 static void	testPresidential()
 {
 	const int	grades[] = {1, 5, 6, 25, 26};
@@ -121,7 +99,6 @@ static void	testPresidential()
 	}
 }
 
-// execute() diretta: ordine dei controlli (prima il grado, poi la firma)
 static void	testExecute()
 {
 	PresidentialPardonForm	form("Nano");
@@ -137,7 +114,6 @@ static void	testExecute()
 	tryExecute(form, high);
 }
 
-// Copia e assegnazione: devono portarsi dietro _signed (e il target nelle figlie)
 static void	testCopy()
 {
 	Bureaucrat				b("Sign", 5);
@@ -161,8 +137,6 @@ static void	testCopy()
 	b.executeForm(rCopy);
 }
 
-// Il target contiene uno slash e la cartella non esiste: ofstream non apre il file.
-// Atteso: firma ok, poi "couldn't execute ... because failed opening", nessun crash, nessun file creato.
 static void	testFileError()
 {
 	ShrubberyCreationForm	bad("cartella_inesistente/home");
