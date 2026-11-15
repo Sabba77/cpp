@@ -9,6 +9,7 @@
 #define YELLOW		"\x1b[33m"
 #define BOLD_CYAN	"\033[1;36m"
 #define BLACK_GRAY	"\033[90m"
+#define BLK_MAGENTA	"\x1b[95m"
 #define RESET		"\033[0m"
 
 template	<typename T>
@@ -22,8 +23,11 @@ public:
 	MutantStack(const MutantStack& other);
 	MutantStack& operator=(const MutantStack& other);
 	~MutantStack();
-	
 
+	iterator	begin();
+	iterator	end();
+	const_iterator	begin() const;
+	const_iterator	end() const;
 };
 
 #include "MutantStack.tpp"
