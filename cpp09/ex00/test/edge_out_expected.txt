@@ -1,0 +1,34 @@
+EDGE.TXT - riga --> output atteso
+(le righe sono tra virgolette per rendere visibili gli spazi finali)
+(gli errori vanno su stderr: per vederli in ordine usa  ./btc edge.txt 2>&1 | grep -v CALLED)
+
+"2009-01-01 | 1"         --> Error: match not found
+"2009-01-02 | 1"         --> 2009-01-02 => 1 = <tasso della prima riga di data.csv>
+"2012-02-29 | 1"         --> 2012-02-29 => 1 = <tasso di quel giorno in data.csv>
+"2011-02-29 | 1"         --> Error: bad input => 2011-02-29 | 1
+"2011-04-31 | 1"         --> Error: bad input => 2011-04-31 | 1
+"2011-13-01 | 1"         --> Error: bad input => 2011-13-01 | 1
+"2011-00-10 | 1"         --> Error: bad input => 2011-00-10 | 1
+"2011-01-00 | 1"         --> Error: bad input => 2011-01-00 | 1
+"2011-1-3 | 1"           --> Error: bad input => 2011-1-3 | 1
+"2011-01-03 | 0"         --> 2011-01-03 => 0 = 0
+"2011-01-03 | 1000"      --> 2011-01-03 => 1000 = 300
+"2011-01-03 | 1000.01"   --> Error: too large a number.
+"2011-01-03 | -0.5"      --> Error: not a positive number.
+"2011-01-03 | abc"       --> Error: bad input => 2011-01-03 | abc
+"2011-01-03 | 1.2.3"     --> Error: bad input => 2011-01-03 | 1.2.3
+"2011-01-03 | 1a"        --> Error: bad input => 2011-01-03 | 1a
+"2011-01-03 | "          --> Error: bad input => 2011-01-03 |   (con lo spazio finale)
+"2011-01-03 |"           --> Error: bad input => 2011-01-03 |
+"2011-01-03 |1"          --> Error: bad input => 2011-01-03 |1
+"2011-01-03|1"           --> Error: bad input => 2011-01-03|1
+"| 5"                    --> Error: bad input => | 5
+" | 5"                   --> Error: bad input =>  | 5
+""  (riga vuota)         --> Error: bad input =>
+"2999-12-31 | 1"         --> 2999-12-31 => 1 = 47115.9   (ultimo tasso del DB, 6 cifre)
+"2011-01-03 | -0"        --> 2011-01-03 => -0 = -0
+
+NOTE
+- Le righe 2 e 3 dipendono da data.csv: controlla con  head -n 2 data.csv  e  grep 2012-02-29 data.csv
+- Se tieni il tuo "match not find!" l'output della prima riga cambia di conseguenza.
+- 47115.9 vale se l'ultima riga di data.csv e' 2022-03-29 con tasso 47115.93 (verifica con tail -n 1 data.csv).

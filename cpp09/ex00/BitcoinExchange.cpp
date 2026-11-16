@@ -130,7 +130,7 @@ void	BitcoinExchange::processFile(const std::string& filename) const
 	if (line != "date | value")
 		throw ErrorException("Error: incorrect file header.");
 
-	std::cout << std::setprecision(10); //
+	std::cout << std::setprecision(10); // for double precision
 	while (std::getline(in, line))
 	{
 		size_t	sepPos = line.find(" | ");
