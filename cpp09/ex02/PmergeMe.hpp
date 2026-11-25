@@ -13,7 +13,6 @@
 #include <cstdlib>
 #include <climits>
 #include <cerrno>
-#include <cctype>
 #include <ctime>
 #include <iomanip>
 
@@ -70,14 +69,8 @@ private:
 	void	sortVector(std::vector<int>& vec);
 	void	sortList(std::list<int>& lis);
 
-	// n-th Jacobsthal number: used by each sort to derive its own insertion order
+	// n-th Jacobsthal number (0, 1, 1, 3, 5, 11, 21, ...), closed form: (2^n - (-1)^n) / 3
 	static size_t	jacobsthal(size_t n);
-
-	// insert value in chain, searching only in [begin, end); returns the index of the inserted element
-	static size_t	binaryInsertionVector(std::vector<int>& chain, int value, size_t end);
-
-	// insert value in chain, searching only in [begin, end); returns an iterator to the inserted element
-	static std::list<int>::iterator	binaryInsertionList(std::list<int>& chain, int value, std::list<int>::iterator end);
 
 	void	parser(int ac, char** av);
 	static double	timing();
